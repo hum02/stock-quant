@@ -1,4 +1,4 @@
-package com.hum.quant.controller;
+package com.hum.quant.controller.dto;
 
 public class TokenInfo {
     private String access_token;

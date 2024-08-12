@@ -1,6 +1,7 @@
 package com.hum.quant.controller;
 
 import com.hum.quant.KisConfig;
+import com.hum.quant.controller.dto.EquityResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

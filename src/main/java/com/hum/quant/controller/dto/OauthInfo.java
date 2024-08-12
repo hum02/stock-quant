@@ -1,4 +1,4 @@
-package com.hum.quant.controller;
+package com.hum.quant.controller.dto;
 
 public class OauthInfo {
     private String grant_type;

@@ -1,4 +1,4 @@
-package com.hum.quant.controller;
+package com.hum.quant.controller.dto;
 
 public class EquityResponse {
     private String rt_cd;

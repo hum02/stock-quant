@@ -23,7 +23,7 @@
             <h2>매수</h2>
         </div>
         <div class="card-body">
-            <form th:action="@{/order/buy/{id}(id=${equity.stck_shrn_iscd})}" method="post">
+            <form id="buyForm" method="post">
                 <div class="mb-3">
                     <label for="buyPrice" class="form-label">매수가격</label>
                     <input type="text" class="form-control" id="buyPrice" name="buyPrice" required />
@@ -36,6 +36,45 @@
             </form>
         </div>
     </div>
+
+    <script>
+        const equityId = [[${equity.stck_shrn_iscd}]];
+
+        document.getElementById('buyForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // 기본 폼 제출 방지
+
+            const buyPrice = document.getElementById('buyPrice').value;
+            const buyQuantity = document.getElementById('buyQuantity').value;
+
+            const requestBody = {
+                buyPrice: buyPrice,
+                buyQuantity: buyQuantity
+            };
+
+            fetch(`/order/buy/${equityId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // 성공적으로 처리된 후의 동작
+                console.log(data);
+                alert('매수 요청이 성공적으로 처리되었습니다.');
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+                alert('매수 요청에 실패했습니다.');
+            });
+        });
+    </script>
 
     <div class="card">
         <div class="card-header">

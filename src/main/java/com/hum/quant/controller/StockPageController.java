@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.hum.quant.KisConfig;
+import com.hum.quant.controller.dto.EquityResponse;
+import com.hum.quant.controller.dto.IndexData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
