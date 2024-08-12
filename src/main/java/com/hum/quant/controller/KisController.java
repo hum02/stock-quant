@@ -57,13 +57,11 @@ public class KisController {
                     }
                 });
 
-        System.out.println("dasd");
 
       return indicesFlux.collectList()
                 .doOnNext(indicesList -> {
                     model.addAttribute("koreaIndexes", indicesList);
                     model.addAttribute("jobDate", getJobDateTime());
-                    System.out.println(indicesList);
                 })
               .then(Mono.just("domesticStock")); // 비동기 처리 후 뷰 이름 반환
     }
@@ -110,7 +108,9 @@ public class KisController {
 
     @GetMapping("/equities/{id}")
     public Mono<String> CurrentPrice(@PathVariable("id") String id, Model model) {
-        String url = KisConfig.REST_BASE_URL + "/uapi/domestic-stock/v1/quotations/inquire-price?fid_cond_mrkt_div_code=J&fid_input_iscd=" + id;
+        String url = KisConfig.REST_BASE_URL + "/uapi/domestic-stock/v1/quotations/inquire-price" +
+                "?fid_cond_mrkt_div_code=J" +
+                "&fid_input_iscd=" + id;
 
         return webClient.get()
                 .uri(url)
