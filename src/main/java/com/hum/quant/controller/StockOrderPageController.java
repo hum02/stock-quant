@@ -11,11 +11,11 @@ import reactor.core.publisher.Mono;
 
 @RequestMapping("/order")
 @Controller
-public class KisOrderController {
+public class StockOrderPageController {
     private AccessTokenManager accessTokenManager;
     private final WebClient webClient;
 
-    public KisOrderController(AccessTokenManager accessTokenManager) {
+    public StockOrderPageController(AccessTokenManager accessTokenManager) {
         this.accessTokenManager = accessTokenManager;
         this.webClient = WebClient.builder().baseUrl(KisConfig.REST_BASE_URL).build();
     }

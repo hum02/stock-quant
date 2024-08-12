@@ -22,16 +22,21 @@ import reactor.util.function.Tuple2;
 import reactor.util.function.Tuples;
 
 @Controller
-public class KisController {
+public class StockPageController {
 
     private AccessTokenManager accessTokenManager;
     private final WebClient webClient;
     private String path;
     private String tr_id;
 
-    public KisController(AccessTokenManager accessTokenManager) {
+    public StockPageController(AccessTokenManager accessTokenManager) {
         this.accessTokenManager = accessTokenManager;
         this.webClient = WebClient.builder().baseUrl(KisConfig.REST_BASE_URL).build();
+    }
+
+    @GetMapping("/")
+    public String index(Model model) {
+        return "index";
     }
 
     @GetMapping("/domestic/index")
