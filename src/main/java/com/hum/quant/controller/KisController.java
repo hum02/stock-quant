@@ -29,9 +29,9 @@ public class KisController {
     private String path;
     private String tr_id;
 
-    public KisController(AccessTokenManager accessTokenManager, WebClient.Builder webClientBuilder) {
+    public KisController(AccessTokenManager accessTokenManager) {
         this.accessTokenManager = accessTokenManager;
-        this.webClient = webClientBuilder.baseUrl(KisConfig.REST_BASE_URL).build();
+        this.webClient = WebClient.builder().baseUrl(KisConfig.REST_BASE_URL).build();
     }
 
     @GetMapping("/domestic/index")

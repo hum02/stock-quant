@@ -7,9 +7,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <title>오늘의 주가</title>
 </head>
-<equityResponse>
+<body>
 <div class="container">
-  <div th:replace="/nav.html :: fragment-nav"></div>
+  <div th:replace="/equity-nav.html :: fragment-equity-nav"></div>
 
   <div class="h4 pb-2 mb-4 text-danger border-bottom border-info"></div>
   <div><span>조회시간: </span><span th:text="${jobDate}" ></span></div>
@@ -18,20 +18,20 @@
     <div class="card-header">
       <h2 th:text="${equity.stck_shrn_iscd}"></h2>
     </div>
-    <div class="card-equityResponse">
+    <div class="card-equity-basic-information">
       <div>
         <span class="fs-1" th:text="${equity.stck_prpr}"></span>원
         <span th:text="${equity.prdy_vrss}" th:style="${equity.prdy_vrss_sign<'3'?'color:red':(equity.prdy_vrss_sign>'3'?'color:blue':'color:black')}"></span>
         <span th:text="${equity.prdy_ctrt}" th:style="${equity.prdy_vrss_sign<'3'?'color:red':(equity.prdy_vrss_sign>'3'?'color:blue':'color:black')}"></span>
       </div>
+      <a th:href="@{/order/equities/{id}(id=${equity.stck_shrn_iscd})}" class="btn btn-primary mt-3">주문하기</a>
     </div>
   </div>
-
 
   <div class="h4 pb-2 mb-4 text-danger border-bottom border-info"></div>
 
   <div class="card">
-    <div class="card-equityResponse">
+    <div class="card-equity-information">
       <table class="table">
         <tbody>
         <tr>
@@ -52,5 +52,5 @@
   </div>
 
 </div>
-</equityResponse>
+</body>
 </html>
