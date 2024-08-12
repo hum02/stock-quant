@@ -1,6 +1,6 @@
 package com.hum.quant.controller;
 
-public class Body {
+public class EquityResponse {
     private String rt_cd;
     private String msg_cd;
     private String msg1;

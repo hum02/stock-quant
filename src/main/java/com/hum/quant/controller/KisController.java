@@ -4,7 +4,6 @@ package com.hum.quant.controller;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,8 +20,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple2;
 import reactor.util.function.Tuples;
-
-import static org.springframework.web.reactive.function.client.WebClient.*;
 
 @Controller
 public class KisController {
@@ -120,9 +117,9 @@ public class KisController {
                 .header("appsecret",KisConfig.APPSECRET)
                 .header("tr_id","FHKST01010100")
                 .retrieve()
-                .bodyToMono(Body.class)
-                .doOnSuccess(body -> {
-                    model.addAttribute("equity", body.getOutput());
+                .bodyToMono(EquityResponse.class)
+                .doOnSuccess(equityResponse -> {
+                    model.addAttribute("equity", equityResponse.getOutput());
                     model.addAttribute("jobDate", getJobDateTime());
                 })
                 .doOnError(result -> System.out.println("*** error: " + result))
